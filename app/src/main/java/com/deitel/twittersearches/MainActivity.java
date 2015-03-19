@@ -52,7 +52,7 @@ public class MainActivity extends ListActivity
 
       // store the saved tags in an ArrayList then sort them
       tags = new ArrayList<String>(savedSearches.getAll().keySet());
-      Collections.sort(tags, String.CASE_INSENSITIVE_ORDER); 
+      Collections.sort(tags, String.CASE_INSENSITIVE_ORDER);
       
       // create ArrayAdapter and use it to bind tags to the ListView
       adapter = new ArrayAdapter<String>(this, R.layout.list_item, tags);
@@ -134,9 +134,9 @@ public class MainActivity extends ListActivity
       {
          // get query string and create a URL representing the search
          String tag = ((TextView) view).getText().toString();
-         String urlString = getString(R.string.searchURL) +
+         String urlString = "http://"+
             Uri.encode(savedSearches.getString(tag, ""), "UTF-8");
-         
+
          // create an Intent to launch a web browser    
          Intent webIntent = new Intent(Intent.ACTION_VIEW, 
             Uri.parse(urlString));                      
@@ -214,7 +214,7 @@ public class MainActivity extends ListActivity
    private void shareSearch(String tag)
    {
       // create the URL representing the search
-      String urlString = getString(R.string.searchURL) +
+      String urlString = "http://"+
          Uri.encode(savedSearches.getString(tag, ""), "UTF-8");
 
       // create Intent to share urlString
